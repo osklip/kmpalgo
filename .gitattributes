@@ -61,3 +61,6 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# Teksty do pomiarow: bez zmian konca wiersza, zeby plik nr k mial dokladnie k * 100 000 znakow
+kmpalgo/Teksty/*.txt -text

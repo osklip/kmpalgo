@@ -59,6 +59,7 @@
             // 
             // checkBoxIgnoreCase
             // 
+            checkBoxIgnoreCase.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             checkBoxIgnoreCase.AutoSize = true;
             checkBoxIgnoreCase.Location = new Point(440, 22);
             checkBoxIgnoreCase.Name = "checkBoxIgnoreCase";
@@ -69,12 +70,14 @@
             // 
             // buttonLoadFile
             // 
+            this.buttonLoadFile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             this.buttonLoadFile.Location = new Point(636, 12);
             this.buttonLoadFile.Name = "buttonLoadFile";
             this.buttonLoadFile.Size = new Size(136, 38);
             this.buttonLoadFile.TabIndex = 3;
             this.buttonLoadFile.Text = "Wczytaj plik .txt";
             this.buttonLoadFile.UseVisualStyleBackColor = true;
+            this.buttonLoadFile.Click += buttonLoadFile_Click;
             // 
             // buttonNext
             // 
@@ -84,6 +87,7 @@
             this.buttonNext.TabIndex = 4;
             this.buttonNext.Text = "Następne";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += buttonNext_Click;
             // 
             // buttonSearch
             // 
@@ -93,29 +97,36 @@
             this.buttonSearch.TabIndex = 5;
             this.buttonSearch.Text = "Szukaj";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += buttonSearch_Click;
             // 
             // buttonChart
             // 
+            buttonChart.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonChart.Location = new Point(440, 72);
             buttonChart.Name = "buttonChart";
             buttonChart.Size = new Size(136, 38);
             buttonChart.TabIndex = 6;
             buttonChart.Text = "Wykres czasu";
             buttonChart.UseVisualStyleBackColor = true;
+            buttonChart.Click += buttonChart_Click;
             // 
             // buttonOwnText
             // 
+            buttonOwnText.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonOwnText.Location = new Point(636, 72);
             buttonOwnText.Name = "buttonOwnText";
             buttonOwnText.Size = new Size(136, 38);
             buttonOwnText.TabIndex = 7;
             buttonOwnText.Text = "Wpisz własny tekst";
             buttonOwnText.UseVisualStyleBackColor = true;
+            buttonOwnText.Click += buttonOwnText_Click;
             // 
             // richTextBoxText
             // 
+            richTextBoxText.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBoxText.BackColor = Color.White;
             richTextBoxText.DetectUrls = false;
+            richTextBoxText.Font = new Font("Consolas", 10F);
             richTextBoxText.HideSelection = false;
             richTextBoxText.Location = new Point(6, 120);
             richTextBoxText.Name = "richTextBoxText";
@@ -125,6 +136,7 @@
             // 
             // labelResult
             // 
+            labelResult.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             labelResult.AutoSize = true;
             labelResult.Location = new Point(8, 418);
             labelResult.Name = "labelResult";
@@ -134,6 +146,7 @@
             // 
             // Form1
             // 
+            AcceptButton = this.buttonSearch;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 446);
@@ -149,6 +162,7 @@
             Controls.Add(labelPattern);
             MinimumSize = new Size(800, 400);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Knuth-Morris-Pratt";
             ResumeLayout(false);
             PerformLayout();

@@ -1,0 +1,8 @@
+Przykład z notatek: tekst ABABABCABABCAB i wzorzec ABABCAB.
+Wzorzec występuje na pozycjach 2 i 7, a wystąpienia nakładają się fragmentem AB.
+
+Algorytm Knutha-Morrisa-Pratta szuka wzorca w tekście tak, aby wskaźnik w tekście nigdy się nie cofał.
+Przed wyszukiwaniem buduje tablicę LPS dla wzorca. Po niezgodności korzysta z tej tablicy,
+żeby nie porównywać ponownie znaków, które już pasują.
+
+Do sprawdzenia opcji "Ignoruj wielkość liter" można wyszukać słowo "algorytm" albo "ALGORYTM".
