@@ -1,0 +1,15 @@
+Wyszukiwanie wzorca w tekście w praktyce
+
+Wyszukiwanie wzorca w tekście to jedno z najczęściej wykonywanych zadań w informatyce. Użytkownik zwykle nie zdaje sobie z tego sprawy, ponieważ wyszukiwanie działa w tle i trwa ułamek sekundy. Mimo to algorytmy wyszukiwania tekstu są obecne w wielu programach, z których korzystamy codziennie.
+
+Najprostszym przykładem jest edytor tekstu. Po naciśnięciu skrótu Ctrl+F program pyta o szukane słowo, a następnie zaznacza wszystkie jego wystąpienia w dokumencie. Podobnie działa przeglądarka internetowa, która potrafi znaleźć słowo na wyświetlanej stronie. W obu przypadkach tekst dokumentu jest tekstem, a szukane słowo jest wzorcem.
+
+Drugim przykładem są narzędzia programistyczne. Programista często szuka w kodzie nazwy zmiennej, funkcji albo komunikatu o błędzie. Środowiska programistyczne przeszukują przy tym wiele plików naraz. Wyszukiwanie wzorca przydaje się także administratorom systemów, którzy przeglądają pliki dziennika zdarzeń. Pliki dziennika potrafią mieć wiele milionów wierszy, dlatego szybkie wyszukiwanie słowa ERROR albo numeru zamówienia ma duże znaczenie.
+
+Trzecim przykładem jest bioinformatyka. Łańcuch DNA można zapisać jako tekst złożony z czterech liter: A, C, G i T. Badacze szukają w takich tekstach określonych sekwencji, czyli wzorców. Teksty biologiczne są bardzo długie, a alfabet jest mały, więc częściowe dopasowania zdarzają się często. W takich warunkach algorytm, który nie cofa się w tekście, ma wyraźną przewagę nad podejściem naiwnym.
+
+Czwartym przykładem są programy antywirusowe i systemy wykrywania włamań. Program antywirusowy szuka w plikach charakterystycznych fragmentów, które pozwalają rozpoznać szkodliwy kod. System wykrywania włamań robi to samo z danymi przesyłanymi przez sieć. Dane przychodzą jako strumień, więc algorytm powinien przetwarzać je znak po znaku, bez cofania się. Ta cecha jest jedną z zalet algorytmu Knutha-Morrisa-Pratta.
+
+Algorytm Knutha-Morrisa-Pratta, w skrócie algorytm KMP, najpierw analizuje wzorzec i buduje tablicę pomocniczą. Następnie przechodzi przez tekst tylko raz. Dzięki temu czas działania algorytmu rośnie liniowo wraz z długością tekstu. Dla krótkiego dokumentu różnica w porównaniu z podejściem naiwnym jest niewielka, ale dla długich tekstów i niekorzystnych wzorców może być bardzo duża.
+
+Warto pamiętać, że w praktyce wyszukiwanie często ignoruje wielkość liter. Użytkownik, który wpisze słowo algorytm, zwykle chce znaleźć także słowo Algorytm na początku zdania. Program może to osiągnąć, zamieniając tekst i wzorzec na małe litery przed porównaniem. Sam algorytm wyszukiwania pozostaje wtedy bez zmian.

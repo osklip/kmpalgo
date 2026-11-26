@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Intrinsics.Arm;
 using System.Text;
 
 namespace kmpalgo
 {
+    /// <summary>
+    /// Algorytm Knutha-Morrisa-Pratta.
+    /// Oznaczenia jak w notatkach: tekst (n - długość, i - wskaźnik),
+    /// wzorzec (m - długość, j - wskaźnik), lps - tablica prefikso-sufiksowa.
+    /// </summary>
     internal class Algorytm
     {
-        public int ComparisonCount { get; private set; }
+        // Liczba porównań znaków w ostatnim wywołaniu Szukaj (budowa LPS + wyszukiwanie)
+        public long LiczbaPorownan { get; private set; }
 
         public int[] BudujTabliceLPS(string wzorzec)
         {
@@ -17,7 +22,7 @@ namespace kmpalgo
 
             while ( i < m)
             {
-                ComparisonCount++;
+                LiczbaPorownan++;
                 if (wzorzec[i] == wzorzec[len])
                 {
                     len++;
@@ -39,7 +44,7 @@ namespace kmpalgo
 
         public List<int> Szukaj(string tekst, string wzorzec)
         {
-            ComparisonCount = 0;
+            LiczbaPorownan = 0;
             List<int> pozycje = new List<int>();
 
             int n = tekst.Length;
@@ -54,7 +59,7 @@ namespace kmpalgo
 
             while (i < n)
             {
-                ComparisonCount++;
+                LiczbaPorownan++;
                 if (tekst[i] == wzorzec[j])
                 {
                     i++;
