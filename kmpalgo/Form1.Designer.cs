@@ -38,6 +38,9 @@
             buttonOwnText = new Button();
             richTextBoxText = new RichTextBox();
             labelResult = new Label();
+            labelLps = new Label();
+            dataGridViewLps = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewLps).BeginInit();
             SuspendLayout();
             // 
             // labelPattern
@@ -55,6 +58,7 @@
             textBoxPattern.Location = new Point(90, 20);
             textBoxPattern.Name = "textBoxPattern";
             textBoxPattern.Size = new Size(312, 23);
+            textBoxPattern.TextChanged += textBoxPattern_TextChanged;
             textBoxPattern.TabIndex = 1;
             // 
             // checkBoxIgnoreCase
@@ -64,6 +68,7 @@
             checkBoxIgnoreCase.Location = new Point(440, 22);
             checkBoxIgnoreCase.Name = "checkBoxIgnoreCase";
             checkBoxIgnoreCase.Size = new Size(135, 19);
+            checkBoxIgnoreCase.CheckedChanged += checkBoxIgnoreCase_CheckedChanged;
             checkBoxIgnoreCase.TabIndex = 2;
             checkBoxIgnoreCase.Text = "Ignoruj wielkość liter";
             checkBoxIgnoreCase.UseVisualStyleBackColor = true;
@@ -128,7 +133,7 @@
             richTextBoxText.DetectUrls = false;
             richTextBoxText.Font = new Font("Consolas", 10F);
             richTextBoxText.HideSelection = false;
-            richTextBoxText.Location = new Point(6, 120);
+            richTextBoxText.Location = new Point(6, 214);
             richTextBoxText.Name = "richTextBoxText";
             richTextBoxText.Size = new Size(772, 290);
             richTextBoxText.TabIndex = 8;
@@ -138,18 +143,45 @@
             // 
             labelResult.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             labelResult.AutoSize = true;
-            labelResult.Location = new Point(8, 418);
+            labelResult.Location = new Point(8, 512);
             labelResult.Name = "labelResult";
             labelResult.Size = new Size(43, 15);
             labelResult.TabIndex = 9;
             labelResult.Text = "Wynik:";
             // 
-            // Form1
+            // labelLps
             // 
+            labelLps.AutoSize = true;
+            labelLps.Location = new Point(14, 122);
+            labelLps.Name = "labelLps";
+            labelLps.Text = "Tablica LPS:";
+            // 
+            // dataGridViewLps
+            // 
+            dataGridViewLps.AllowUserToAddRows = false;
+            dataGridViewLps.AllowUserToDeleteRows = false;
+            dataGridViewLps.AllowUserToResizeColumns = false;
+            dataGridViewLps.AllowUserToResizeRows = false;
+            dataGridViewLps.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewLps.BackgroundColor = Color.White;
+            dataGridViewLps.ColumnHeadersVisible = false;
+            dataGridViewLps.Location = new Point(90, 120);
+            dataGridViewLps.Name = "dataGridViewLps";
+            dataGridViewLps.ReadOnly = true;
+            dataGridViewLps.RowHeadersWidth = 70;
+            dataGridViewLps.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewLps.ScrollBars = ScrollBars.Horizontal;
+            dataGridViewLps.Size = new Size(682, 86);
+            dataGridViewLps.TabIndex = 7;
+            // 
+            // Form1
+            //  
             AcceptButton = this.buttonSearch;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 446);
+            ClientSize = new Size(784, 540);
+            Controls.Add(dataGridViewLps);
+            Controls.Add(labelLps);
             Controls.Add(labelResult);
             Controls.Add(richTextBoxText);
             Controls.Add(buttonOwnText);
@@ -160,10 +192,11 @@
             Controls.Add(checkBoxIgnoreCase);
             Controls.Add(textBoxPattern);
             Controls.Add(labelPattern);
-            MinimumSize = new Size(800, 400);
+            MinimumSize = new Size(800, 500);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Knuth-Morris-Pratt";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewLps).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,5 +213,7 @@
         private Button buttonOwnText;
         private RichTextBox richTextBoxText;
         private Label labelResult;
+        private Label labelLps;
+        private DataGridView dataGridViewLps;
     }
 }

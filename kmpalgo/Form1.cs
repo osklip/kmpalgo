@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 
 namespace kmpalgo
@@ -88,6 +88,69 @@ namespace kmpalgo
         {
             FormPomiar oknoPomiaru = new FormPomiar();
             oknoPomiaru.Show();
+        }
+
+        // ---------------- Tablica LPS ----------------
+
+        // Tablica LPS przelicza się przy każdej zmianie wzorca
+        private void textBoxPattern_TextChanged(object? sender, EventArgs e)
+        {
+            PokazTabliceLPS();
+        }
+
+        // ... i przy zmianie opcji, bo dla "Ignoruj wielkość liter" liczymy ją dla małych liter
+        private void checkBoxIgnoreCase_CheckedChanged(object? sender, EventArgs e)
+        {
+            PokazTabliceLPS();
+        }
+
+        /// <summary>
+        /// Pokazuje tablicę LPS wzorca w trzech wierszach: indeks, znak, lps[i]
+        /// (tak jak w notatkach). Komórki z lps[i] > 0 są podświetlone.
+        /// </summary>
+        private void PokazTabliceLPS()
+        {
+            string wzorzec = textBoxPattern.Text;
+            if (checkBoxIgnoreCase.Checked)
+                wzorzec = wzorzec.ToLowerInvariant();
+
+            dataGridViewLps.Rows.Clear();
+            dataGridViewLps.Columns.Clear();
+
+            int m = wzorzec.Length;
+            if (m == 0)
+                return;
+
+            int[] lps = kmp.BudujTabliceLPS(wzorzec);
+
+            // Jedna kolumna na każdy znak wzorca
+            dataGridViewLps.ColumnCount = m;
+            for (int k = 0; k < m; k++)
+            {
+                dataGridViewLps.Columns[k].Width = 32;
+                dataGridViewLps.Columns[k].SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewLps.Columns[k].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Trzy wiersze: indeks, znak, lps[i]
+            dataGridViewLps.Rows.Add(3);
+            dataGridViewLps.Rows[0].HeaderCell.Value = "indeks";
+            dataGridViewLps.Rows[1].HeaderCell.Value = "znak";
+            dataGridViewLps.Rows[2].HeaderCell.Value = "lps[i]";
+
+            for (int k = 0; k < m; k++)
+            {
+                dataGridViewLps.Rows[0].Cells[k].Value = k;
+                dataGridViewLps.Rows[1].Cells[k].Value = wzorzec[k].ToString();
+                dataGridViewLps.Rows[2].Cells[k].Value = lps[k];
+
+                if (lps[k] > 0)
+                    dataGridViewLps.Rows[2].Cells[k].Style.BackColor = Color.LightYellow;
+            }
+
+            // Bez zaznaczonej komórki (strzałka w nagłówku wiersza zasłaniałaby napis "indeks")
+            dataGridViewLps.CurrentCell = null;
+            dataGridViewLps.ClearSelection();
         }
 
         // ---------------- Wyszukiwanie ----------------
